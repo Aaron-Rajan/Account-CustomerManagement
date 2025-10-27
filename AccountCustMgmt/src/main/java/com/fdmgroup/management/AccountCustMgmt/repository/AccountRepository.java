@@ -1,0 +1,16 @@
+package com.fdmgroup.management.AccountCustMgmt.repository;
+
+import com.fdmgroup.management.AccountCustMgmt.model.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+@Repository
+public interface AccountRepository extends JpaRepository<Account, Long> {
+    @Query("SELECT a FROM Account a JOIN a.customer c JOIN c.address addr WHERE lower(addr.city) = lower(:city)")
+    List<Account> getAllCityAccounts(@Param("city") String city);
+}
