@@ -1,0 +1,8 @@
+.accountList {
+  list-style: none;   /* removes bullets */
+  padding: 0;         /* removes left indent */
+  margin: 0;          /* optional: remove extra spacing */
+}
+
+/* optional: also hide the marker in some browsers */
+.accountList li::marker { content: ""; }
